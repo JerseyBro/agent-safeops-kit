@@ -1,0 +1,14 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax check
+        run: |
+          python -m py_compile scripts/safe_scan.py scripts/safe_handoff.py scripts/disk_watch.py
